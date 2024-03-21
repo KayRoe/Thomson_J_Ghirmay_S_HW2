@@ -1,0 +1,15 @@
+{
+  "name": "tgw2",
+  "version": "1.0.0",
+  "description": "Welcome to our Memory Game! This game challenges your memory by asking you to match pairs of cards hidden on the board. Below are some details about how we built this game and the resources we utilized.",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
