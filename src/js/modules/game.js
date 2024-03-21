@@ -3,11 +3,11 @@ export class Game {
     constructor() {
         this.cards = [
             new Card(1, "images/image1.svg", "panda"),
-            new Card(2, "images/image2.svg", "giraff"),
+            new Card(2, "images/image2.svg", "giraffe"),
             new Card(3, "images/image3.svg", "elephant"),
             new Card(4, "images/image4.svg", "zebra"),
             new Card(5, "images/image1.svg", "panda"),
-            new Card(6, "images/image2.svg", "giraff"),
+            new Card(6, "images/image2.svg", "giraffe"),
             new Card(7, "images/image3.svg", "elephant"),
             new Card(8, "images/image4.svg", "zebra"),
         ]
@@ -18,38 +18,38 @@ export class Game {
         this.hasFlippedCard = false
         this.firstCard = null;
         this.secondCard = null;
+      
+
     }
 
-    reset() {
-        this.numClickedCards = 0;
-        this.numMatchedCards = 0;
-        this.hasFlippedCard = false
+
+    resetBoard() {
+        this.hasFlippedCard = false;
         this.firstCard = null;
         this.secondCard = null;
-        this.renderBoard();
     }
-     
+  
     start() {
         console.log('start game');
         this.renderBoard();
     }
 
-       
     checkForMatch() {
-        console.log('board for check', this.board)
         this.numClickedCards = 0;
         if (this.firstCard?.frontAlt === this.secondCard?.frontAlt) {
             this.numMatchedCards += 2;
-            if (this.numMatchedCards === this.cards.length) {
-                // this.handleGameCompletion();
-                console.log('win')
+         
+            if (this.numMatchedCards === this.cards.length) { 
+                window.alert("Congratulations! You Won!"); 
             }
         } else {
             setTimeout(() => {
                 this.unflipCards();
-            }, 1000);
+            }, 800);
         }
     }
+    
+    
 
     flipCard(e) {
         const card = e.target.parentNode; 
@@ -70,7 +70,9 @@ export class Game {
         } else if (!cardInClass.isFlipped && this.numClickedCards === 2) {
             this.secondCard = cardInClass;
             this.secondCard.isFlipped = true;
-            console.log('secondcard', this.secondCard)
+            console.log('secondcard', this.secondCard);
+            
+
             const card1Front = document.querySelector(`#front-${this.firstCard?.id}`)
             const card1Back = document.querySelector(`#back-${this.firstCard?.id}`)
             const card2Front = document.querySelector(`#front-${this.secondCard?.id}`)
